@@ -76,11 +76,11 @@ const projectsData = [
         ],
         actions: [
             "架构选型：GeoScene + 3D瓦片 + MinIO对象存储，采用「金字塔分层 + 边缘缓存」策略",
-            "可研方案：主导编写《上海市城市智理时空一体化大系统可研报告》草案"
+            "可研方案：主导编写《XX市城市智理时空一体化大系统可研报告》草案"
         ],
         actionsEn: [
             "Architecture selection: GeoScene + 3D tiles + MinIO object storage, using \"pyramid layering + edge caching\" strategy",
-            "Feasibility study: Led writing of \"Shanghai Smart City Spatial-Temporal Integration System Feasibility Report\" draft"
+            "Feasibility study: Led writing of \"Smart City Spatial-Temporal Integration System Feasibility Report\" draft"
         ],
         value: "项目通过市发改委「可研」评审，拿到 4k万建设指标",
         valueEn: "Project passed municipal development and reform commission \"feasibility\" review, secured 40M construction target"
