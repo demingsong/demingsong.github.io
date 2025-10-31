@@ -5,7 +5,7 @@ const i18nData = {
         nav: {
             name: "宋德明",
             about: "关于我",
-            coreSkills: "核心技术",
+            coreSkills: "核心能力",
             skills: "技术栈", 
             projects: "项目作品集",
             contact: "联系方式",
