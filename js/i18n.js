@@ -20,7 +20,7 @@ const i18nData = {
         
         // Meta信息
         meta: {
-            title: "宋德明 - 高级架构师 | 15年JAVA架构与研发",
+            title: "宋德明 - 系统架构|电商系统|物联网|GIS|全栈|Java",
             description: "宋德明，硕士，高级架构师，15年JAVA架构与研发经验，10年互联网项目，8年GIS/数字孪生，20+人团队管理。",
             "avatar-alt": "宋德明"
         },
@@ -30,7 +30,7 @@ const i18nData = {
             name: "宋德明",
             title: "高级架构师",
             tag1: "技术领导者",
-            tag2: "AI应用探索者",
+            tag2: "AI技术应用",
             highlight1: "15年JAVA架构与研发",
             highlight2: "10年互联网",
             highlight3: "8年GIS/数字孪生", 
