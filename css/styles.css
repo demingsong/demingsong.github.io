@@ -1,0 +1,631 @@
+/* Custom Styles - 宋德明个人简历网站 */
+/* 基于设计令牌：现代极简专业主义风格 */
+
+/* 基础样式重置和优化 */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 自定义动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes counter {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* 滚动揭示动画 */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 不同方向的动画 */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.6s ease-out;
+}
+
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 延迟动画 */
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+.reveal-delay-5 {
+    transition-delay: 0.5s;
+}
+
+/* Hero区域标签样式 */
+.hero-tag {
+    background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 102, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hero-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 102, 255, 0.3);
+}
+
+.hero-tag.secondary {
+    background: linear-gradient(135deg, #404040 0%, #171717 100%);
+    box-shadow: 0 2px 4px rgba(64, 64, 64, 0.2);
+}
+
+.hero-tag.secondary:hover {
+    box-shadow: 0 4px 8px rgba(64, 64, 64, 0.3);
+}
+
+/* 教育背景图标样式 */
+.education-icon {
+    color: #0066FF;
+    transition: all 0.3s ease;
+}
+
+.education-icon:hover {
+    transform: scale(1.1);
+    color: #0052CC;
+}
+
+/* 联系方式图标样式 */
+.contact-icon {
+    background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+    transition: all 0.3s ease;
+}
+
+.contact-icon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 102, 255, 0.3);
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+    transition: all 0.25s ease-out;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* 按钮悬停效果 */
+.btn-primary {
+    background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+    box-shadow: 0 2px 4px rgba(0, 102, 255, 0.2);
+    transition: all 0.2s ease-out;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 102, 255, 0.3);
+}
+
+.btn-secondary {
+    border: 2px solid #E5E5E5;
+    background: transparent;
+    transition: all 0.2s ease-out;
+}
+
+.btn-secondary:hover {
+    border-color: #A3A3A3;
+    background: #FAFAFA;
+    transform: translateY(-1px);
+}
+
+/* 数据计数器动画 */
+.counter {
+    font-variant-numeric: tabular-nums;
+    animation: counter 1s ease-out;
+}
+
+/* 技能标签悬停效果 */
+.skill-tag {
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+}
+
+.skill-tag:hover {
+    background: #E5E5E5 !important;
+    transform: translateY(-1px);
+}
+
+/* 项目卡片样式 */
+.project-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 确保项目卡片可见 */
+.project-card.reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.project-card.reveal.active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.project-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0066FF 0%, #0052CC 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* 项目数据亮点样式 */
+.project-metrics {
+    background: #E6F0FF;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.metric-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0052CC;
+    font-family: 'Inter', sans-serif;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: #404040;
+    font-weight: 500;
+}
+
+/* 技术动作列表 */
+.tech-actions {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+}
+
+.tech-actions li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    color: #404040;
+    line-height: 1.6;
+}
+
+.tech-actions li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #0066FF;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* 业务价值高亮 */
+.business-value {
+    border-left: 4px solid #27AE60;
+    padding-left: 16px;
+    background: rgba(39, 174, 96, 0.05);
+    border-radius: 0 8px 8px 0;
+    margin-top: 24px;
+    padding: 16px;
+}
+
+/* 角色标签 */
+.role-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #E6F0FF;
+    color: #0066FF;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+/* 时间徽章 */
+.time-badge {
+    display: inline-block;
+    background: #F5F5F5;
+    color: #A3A3A3;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 12px;
+}
+
+/* 响应式字体大小 */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem !important;
+    }
+    
+    .hero-highlight {
+        font-size: 1.5rem !important;
+    }
+    
+    .project-card {
+        padding: 24px;
+    }
+    
+    .metric-value {
+        font-size: 24px;
+    }
+}
+
+/* 语言切换动画 */
+.lang-transition {
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* 加载状态 */
+.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* 平滑滚动优化 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* 焦点可见性 */
+.focusable:focus {
+    outline: 3px solid #0066FF;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* 触摸目标优化 */
+@media (max-width: 768px) {
+    .touch-target {
+        min-height: 48px;
+        min-width: 48px;
+    }
+}
+
+/* 性能优化 */
+.gpu-accelerated {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* 深色模式支持（预留） */
+@media (prefers-color-scheme: dark) {
+    /* 暂时保持浅色主题，未来可扩展 */
+}
+
+/* 打印样式 */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .project-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}
+
+/* 项目弹窗样式 */
+#project-modal {
+    animation: fadeIn 0.3s ease-out;
+}
+
+#project-modal > div {
+    animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 弹窗内容滚动条样式 */
+#project-modal .max-h-\\[90vh\\]::-webkit-scrollbar {
+    width: 6px;
+}
+
+#project-modal .max-h-\\[90vh\\]::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+#project-modal .max-h-\\[90vh\\]::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+#project-modal .max-h-\\[90vh\\]::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* 查看详情按钮样式 */
+.view-details-btn {
+    background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+    box-shadow: 0 2px 4px rgba(0, 102, 255, 0.2);
+    transition: all 0.2s ease-out;
+}
+
+.view-details-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 102, 255, 0.3);
+}
+
+.view-details-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 102, 255, 0.2);
+}
+
+/* 弹窗内数据卡片样式 */
+#project-modal .bg-neutral-50 {
+    transition: all 0.2s ease-out;
+}
+
+#project-modal .bg-neutral-50:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 弹窗业务价值区域 */
+#project-modal .bg-success {
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(39, 174, 96, 0.05) 100%);
+    border-left: 4px solid #27AE60;
+}
+
+/* 响应式弹窗 */
+@media (max-width: 768px) {
+    #project-modal {
+        padding: 1rem;
+    }
+    
+    #project-modal .max-w-4xl {
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    #project-modal .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    #project-modal .text-2xl {
+        font-size: 1.5rem;
+    }
+    
+    #project-modal .text-lg {
+        font-size: 1rem;
+    }
+}
+
+/* 技术卡片hover效果 */
+.tech-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.tech-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Java生态卡片hover效果 */
+.tech-card:hover .bg-amber-100 {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    transform: scale(1.1);
+}
+
+.tech-card:hover .text-amber-600 {
+    color: #D97706;
+}
+
+/* 架构设计卡片hover效果 */
+.tech-card:hover .bg-yellow-100 {
+    background: linear-gradient(135deg, #FEF9C3 0%, #FEF08A 100%);
+    transform: scale(1.1);
+}
+
+.tech-card:hover .text-yellow-600 {
+    color: #CA8A04;
+}
+
+/* 云计算卡片hover效果 */
+.tech-card:hover .bg-blue-100 {
+    background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+    transform: scale(1.1);
+}
+
+.tech-card:hover .text-blue-600 {
+    color: #2563EB;
+}
+
+/* GIS物联网卡片hover效果 */
+.tech-card:hover .bg-cyan-100 {
+    background: linear-gradient(135deg, #CFFAFE 0%, #A5F3FC 100%);
+    transform: scale(1.1);
+}
+
+.tech-card:hover .text-cyan-600 {
+    color: #0891B2;
+}
+
+/* 技术卡片标题hover效果 */
+.tech-card:hover h4 {
+    color: #1F2937;
+    transform: translateX(4px);
+    transition: all 0.3s ease;
+}
+
+/* 技术卡片描述hover效果 */
+.tech-card:hover p {
+    color: #374151;
+    transform: translateX(2px);
+    transition: all 0.3s ease;
+}

@@ -1,217 +1,269 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宋德明 - 资深Java架构师 | 技术领导者</title>
-    <meta name="description" content="13年Java架构与研发经验，专注高并发电商、微服务架构、团队管理。曾服务于万达、苏宁等知名企业，具备从0到1搭建大型系统的丰富经验。">
+    <title data-i18n="meta.title">宋德明 - 高级架构师 | 15年JAVA架构与研发</title>
+    <meta name="description" data-i18n="meta.description" content="宋德明，硕士，高级架构师，15年JAVA架构与研发经验，10年互联网项目，8年GIS/数字孪生，20+人团队管理。">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
+    <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Animation Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     
-    <style>
-        :root {
-            --primary-dark: #1a202c;
-            --accent-blue: #00d4ff;
-            --warm-gray: #718096;
-            --bg-white: #ffffff;
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    
+    <!-- Chart.js for Radar Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Inter', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'ui': ['Inter', 'sans-serif']
+                    },
+                    colors: {
+                        'primary': {
+                            '50': '#E6F0FF',
+                            '100': '#CCE0FF',
+                            '500': '#0066FF',
+                            '600': '#0052CC',
+                            '900': '#003D99'
+                        },
+                        'neutral': {
+                            '50': '#FAFAFA',
+                            '100': '#F5F5F5',
+                            '200': '#E5E5E5',
+                            '500': '#A3A3A3',
+                            '700': '#404040',
+                            '900': '#171717'
+                        },
+                        'success': '#27AE60',
+                        'warning': '#E67E22',
+                        'error': '#E74C3C',
+                        'info': '#3498DB'
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                        '88': '22rem',
+                        '128': '32rem'
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'counter': 'counter 1s ease-out',
+                        'float': 'float 3s ease-in-out infinite'
+                    }
+                }
+            }
         }
-        
-        body {
-            font-family: 'Noto Sans SC', sans-serif;
-            background: var(--bg-white);
-            color: var(--primary-dark);
-        }
-        
-        .font-serif {
-            font-family: 'Noto Serif SC', serif;
-        }
-        
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        .hero-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .particle-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .skill-card {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-        }
-        
-        .project-card {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(113, 128, 150, 0.2);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            border-color: var(--accent-blue);
-        }
-        
-        .stats-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--accent-blue);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-blue);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .section-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        
-        .section-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s ease;
-        }
-        
-        .tech-tag {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--accent-blue);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .tech-tag:hover {
-            background: var(--accent-blue);
-            color: white;
-            transform: scale(1.05);
-        }
-    </style>
+    </script>
 </head>
-<body>
+<body class="bg-neutral-50 text-neutral-900 font-body antialiased">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="font-serif font-bold text-xl text-gray-900">
-                    宋德明
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-neutral-200 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-18">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="images/professional_avatar.png" data-i18n="meta.avatar-alt" alt="宋德明" class="w-8 h-8 rounded-full object-cover">
+                    <span class="text-lg font-semibold text-neutral-900" data-i18n="nav.name">宋德明</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-500">首页</a>
-                    <a href="about.html" class="nav-link text-gray-700 hover:text-blue-500">关于我</a>
-                    <a href="projects.html" class="nav-link text-gray-700 hover:text-blue-500">项目经验</a>
-                    <a href="contact.html" class="nav-link text-gray-700 hover:text-blue-500">联系我</a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link text-neutral-700 hover:text-primary-500 transition-colors duration-200" data-i18n="nav.about">关于我</a>
+    
+                    <a href="#core-skills" class="nav-link text-neutral-700 hover:text-primary-500 transition-colors duration-200" data-i18n="nav.coreSkills">核心技术</a>
+                    <a href="#skills" class="nav-link text-neutral-700 hover:text-primary-500 transition-colors duration-200" data-i18n="nav.skills">技术栈</a>
+                    <a href="#projects" class="nav-link text-neutral-700 hover:text-primary-500 transition-colors duration-200" data-i18n="nav.projects">项目作品集</a>
+    
+                    <a href="#contact" class="nav-link text-neutral-700 hover:text-primary-500 transition-colors duration-200" data-i18n="nav.contact">联系方式</a>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-500">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
+                
+                <!-- Language Switcher & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Language Switcher -->
+                    <button id="language-toggle" class="flex items-center space-x-2 px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg transition-colors duration-200">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        <span class="text-sm font-medium text-neutral-700" id="current-language" data-i18n="lang.chinese">中文</span>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden p-2 text-neutral-700 hover:text-primary-500" id="mobile-menu-toggle">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
         </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-neutral-200 hidden">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#about" class="block text-neutral-700 hover:text-primary-500 transition-colors duration-200" data-i18n="nav.about">关于我</a>
+
+                <a href="#core-skills" class="block text-neutral-700 hover:text-primary-500 transition-colors duration-200" data-i18n="nav.coreSkills">核心技术</a>
+                <a href="#skills" class="block text-neutral-700 hover:text-primary-500 transition-colors duration-200" data-i18n="nav.skills">技术栈</a>
+                <a href="#projects" class="block text-neutral-700 hover:text-primary-500 transition-colors duration-200" data-i18n="nav.projects">项目作品集</a>
+
+                <a href="#contact" class="block text-neutral-700 hover:text-primary-500 transition-colors duration-200" data-i18n="nav.contact">联系方式</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center relative">
-        <canvas id="particle-canvas" class="particle-canvas"></canvas>
-        <div class="hero-content w-full">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div class="text-white">
-                        <h1 class="font-serif text-5xl md:text-6xl font-bold mb-6 opacity-0" id="hero-title">
-                            资深Java架构师
-                        </h1>
-                        <h2 class="text-2xl md:text-3xl font-light mb-8 opacity-0" id="hero-subtitle">
-                            专注高并发电商 · 微服务架构 · 技术领导力
-                        </h2>
-                        <p class="text-lg mb-8 leading-relaxed opacity-0" id="hero-description">
-                            13年Java架构与研发经验，10年互联网高并发电商实战，7年团队管理经验。
-                            曾服务于万达、苏宁、恒基等知名企业，具备从0到1搭建大型分布式系统的丰富经验。
-                        </p>
-                        <div class="flex flex-wrap gap-4 mb-8 opacity-0" id="hero-stats">
-                            <div class="text-center">
-                                <div class="text-3xl font-bold" data-count="13">0</div>
-                                <div class="text-sm opacity-80">年经验</div>
+    <!-- About Section (Homepage) -->
+    <section id="about" class="min-h-screen flex items-center bg-neutral-50 reveal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left: Text Content -->
+                <div class="reveal reveal-left">
+                    <h1 class="text-3xl lg:text-5xl font-display font-bold text-neutral-900 mb-8" data-i18n="about.title"></h1>
+                    
+                    <!-- 核心技术能力标题 -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl md:text-3xl font-light mb-8 text-neutral-900" data-i18n="coreSkills.title"></h2>
+                        <p class="text-lg text-neutral-600 leading-relaxed" data-i18n="coreSkills.subtitle1"></p>
+                        <p class="mt-2 text-lg text-neutral-600 leading-relaxed" data-i18n="coreSkills.subtitle2"></p>
+                        <p class="mt-2 text-lg text-neutral-600 leading-relaxed" data-i18n="coreSkills.subtitle3"></p>
+                    </div>
+                    
+                    <!-- Key Strengths -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold text-neutral-900 mb-4" data-i18n="about.strengths"></h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
+                                <span class="text-neutral-700" data-i18n="about.strength1"></span>
                             </div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold" data-count="20">0</div>
-                                <div class="text-sm opacity-80">+项目</div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
+                                <span class="text-neutral-700" data-i18n="about.strength2"></span>
                             </div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold" data-count="10">0</div>
-                                <div class="text-sm opacity-80">人团队</div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
+                                <span class="text-neutral-700" data-i18n="about.strength3"></span>
                             </div>
-                        </div>
-                        <div class="flex space-x-4 opacity-0" id="hero-buttons">
-                            <a href="projects.html" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
-                                查看项目
-                            </a>
-                            <a href="contact.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition-colors">
-                                联系我
-                            </a>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
+                                <span class="text-neutral-700" data-i18n="about.strength4"></span>
+                            </div>
                         </div>
                     </div>
-                    <div class="flex justify-center lg:justify-end opacity-0" id="hero-image">
-                        <div class="relative">
-                            <img src="resources/hero-portrait.png" alt="宋德明 - 资深Java架构师" 
-                                 class="w-80 h-80 object-cover rounded-2xl shadow-2xl">
-                            <div class="absolute -top-4 -right-4 w-24 h-24 bg-blue-400 rounded-full flex items-center justify-center text-white font-bold">
-                                架构师
+                </div>
+                
+                <!-- Right: Avatar -->
+                <div class="reveal reveal-right flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <!-- 头像圆形容器 -->
+                        <div class="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full p-2 bg-blue-500 shadow-2xl">
+                            <!-- 头像图片 -->
+                            <img src="images/professional_avatar.png" data-i18n="meta.avatar-alt" alt="宋德明" class="w-full h-full rounded-full object-cover shadow-xl">
+                        </div>
+                        <!-- 装饰性图标 -->
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-primary-500 rounded-2xl flex items-center justify-center shadow-lg hover:bg-primary-600 transition-colors duration-300">
+                            <i data-lucide="code-2" class="w-12 h-12 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Technical Skills Section -->
+    <section id="core-skills" class="py-16 lg:py-24 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-5xl font-display font-bold text-neutral-900 mb-6" data-i18n="coreSkills.radarTitle"></h2>
+                <p class="text-xl text-neutral-600 max-w-4xl mx-auto" data-i18n="coreSkills.subtitle1"></p>
+            </div>
+            
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left: Radar Chart -->
+                <div class="reveal reveal-left">
+                    <div id="skills-radar" style="width: 100%; height: 400px;"></div>
+                </div>
+                <!-- <div class="reveal reveal-left">
+                    <h3 class="text-2xl font-display font-semibold text-neutral-900 mb-8 text-center" data-i18n="coreSkills.assessment">技术能力评估</h3>
+                    <div class="bg-neutral-50 rounded-2xl p-8">
+                        <canvas id="radar-chart" width="400" height="400" class="mx-auto"></canvas>
+                    </div>
+                </div> -->
+                
+                <!-- Right: Technology Blocks -->
+                <div class="reveal reveal-right">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Java Ecosystem -->
+                        <div class="tech-card bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-100 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="coffee" class="w-6 h-6 text-amber-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-neutral-900" data-i18n="coreSkills.java.title">Java生态</h4>
                             </div>
+                            <p class="text-neutral-600 text-sm" data-i18n="coreSkills.java.desc">Spring Boot, Spring Cloud, MyBatis, JPA</p>
+                        </div>
+                        
+                        <!-- Architecture Design -->
+                        <div class="tech-card bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-6 border border-yellow-100 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="building-2" class="w-6 h-6 text-yellow-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-neutral-900" data-i18n="coreSkills.architecture.title">架构设计</h4>
+                            </div>
+                            <p class="text-neutral-600 text-sm" data-i18n="coreSkills.architecture.desc">微服务, 分布式系统, 高并发设计</p>
+                        </div>
+                        
+                        <!-- Cloud Computing -->
+                        <div class="tech-card bg-gradient-to-br from-blue-50 to-sky-50 rounded-2xl p-6 border border-blue-100 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="cloud" class="w-6 h-6 text-blue-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-neutral-900" data-i18n="coreSkills.cloud.title">云计算</h4>
+                            </div>
+                            <p class="text-neutral-600 text-sm" data-i18n="coreSkills.cloud.desc">AWS, 阿里云, Docker, Kubernetes</p>
+                        </div>
+                        
+                        <!-- GIS & IoT -->
+                        <div class="tech-card bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-6 border border-cyan-100 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="globe" class="w-6 h-6 text-cyan-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-neutral-900" data-i18n="coreSkills.gis.title">GIS物联网</h4>
+                            </div>
+                            <p class="text-neutral-600 text-sm" data-i18n="coreSkills.gis.desc">ArcGIS, GeoScene, NB-IoT平台</p>
                         </div>
                     </div>
                 </div>
@@ -220,208 +272,207 @@
     </section>
 
     <!-- Skills Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 section-reveal">
-                <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">核心技术能力</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    多年积累的技术栈涵盖Java生态、分布式架构、云计算、GIS地理信息系统、物联网平台等多个领域
-                </p>
+    <section id="skills" class="py-16 lg:py-24 bg-neutral-50 reveal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-5xl font-display font-bold text-neutral-900 mb-6" data-i18n="skills.title">技术纵深</h2>
+                <p class="text-xl text-neutral-600 max-w-3xl mx-auto" data-i18n="skills.subtitle">全栈架构能力，覆盖从底层到应用层的完整技术栈</p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="section-reveal">
-                    <div id="skills-radar" style="width: 100%; height: 400px;"></div>
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <!-- Language/Framework -->
+                <div class="bg-white rounded-2xl p-8 shadow-card reveal reveal-delay-1">
+                    <h3 class="text-2xl font-display font-semibold text-neutral-900 mb-6" data-i18n="skills.languages">语言/框架</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">Java</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">Spring Boot</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">Spring Cloud</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">MyBatis</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">JPA</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">Python</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">Go</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">NodeJS</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">Vue</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">React</span>
+                    </div>
                 </div>
                 
-                <div class="section-reveal">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="skill-card p-6 rounded-xl">
-                            <div class="text-3xl mb-3">☕</div>
-                            <h3 class="font-semibold text-lg mb-2">Java生态</h3>
-                            <p class="text-gray-600 text-sm">Spring Boot, Spring Cloud, MyBatis, JPA</p>
-                        </div>
-                        <div class="skill-card p-6 rounded-xl">
-                            <div class="text-3xl mb-3">🏗️</div>
-                            <h3 class="font-semibold text-lg mb-2">架构设计</h3>
-                            <p class="text-gray-600 text-sm">微服务, 分布式系统, 高并发设计</p>
-                        </div>
-                        <div class="skill-card p-6 rounded-xl">
-                            <div class="text-3xl mb-3">☁️</div>
-                            <h3 class="font-semibold text-lg mb-2">云计算</h3>
-                            <p class="text-gray-600 text-sm">AWS, 阿里云, Docker, Kubernetes</p>
-                        </div>
-                        <div class="skill-card p-6 rounded-xl">
-                            <div class="text-3xl mb-3">🌐</div>
-                            <h3 class="font-semibold text-lg mb-2">GIS物联网</h3>
-                            <p class="text-gray-600 text-sm">ArcGIS, GeoScene, NB-IoT平台</p>
-                        </div>
+                <!-- High Concurrency -->
+                <div class="bg-white rounded-2xl p-8 shadow-card reveal reveal-delay-2">
+                    <h3 class="text-2xl font-display font-semibold text-neutral-900 mb-6" data-i18n="skills.concurrency">高并发</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer" data-i18n="skills.tags.qps-gateway">10w级QPS网关</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer" data-i18n="skills.tags.sharding">分库分表</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer" data-i18n="skills.tags.async-message">异步消息</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer" data-i18n="skills.tags.data-tiering">冷热数据分层</span>
+                    </div>
+                </div>
+                
+                <!-- Data Layer -->
+                <div class="bg-white rounded-2xl p-8 shadow-card reveal reveal-delay-4">
+                    <h3 class="text-2xl font-display font-semibold text-neutral-900 mb-6" data-i18n="skills.data">数据层</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">MySQL</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">PostgreSQL</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">Oracle</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">MongoDB</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">Redis</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">HBase</span>
+                    </div>
+                </div>
+                
+                <!-- GIS/Spatial -->
+                <div class="bg-white rounded-2xl p-8 shadow-card reveal reveal-delay-1">
+                    <h3 class="text-2xl font-display font-semibold text-neutral-900 mb-6" data-i18n="skills.gis">GIS/时空</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">ArcGIS</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">GeoScene</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">SuperMap</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">PostGIS</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer" data-i18n="skills.tags.3d-tiles">三维切片</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer" data-i18n="skills.tags.wmts">WMTS服务</span>
+                    </div>
+                </div>
+                
+                <!-- IoT -->
+                <div class="bg-white rounded-2xl p-8 shadow-card reveal reveal-delay-2">
+                    <h3 class="text-2xl font-display font-semibold text-neutral-900 mb-6" data-i18n="skills.iot">物联网</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">MQTT</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">CoAP</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">LwM2M</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer" data-i18n="skills.tags.nb-iot">NB-IoT长连接</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer" data-i18n="skills.tags.ocpp">OCPP协议</span>
+                    </div>
+                </div>
+                
+                <!-- Middleware -->
+                <div class="bg-white rounded-2xl p-8 shadow-card reveal reveal-delay-3">
+                    <h3 class="text-2xl font-display font-semibold text-neutral-900 mb-6" data-i18n="skills.middleware">中间件</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">Kafka</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">RocketMQ</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">ElasticSearch</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">Flink</span>
+                        <span class="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-sm font-medium text-neutral-700 transition-colors duration-200 cursor-pointer">ShardingSphere</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Projects -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 section-reveal">
-                <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">精选项目展示</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    从0到1搭建多个大型平台系统，涵盖电商、广告、物联网、GIS等多个领域
-                </p>
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 lg:py-24 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-5xl font-display font-bold text-neutral-900 mb-6" data-i18n="projects.title"></h2>
+                <p class="text-xl text-neutral-600 max-w-3xl mx-auto" data-i18n="projects.subtitle"></p>
             </div>
             
-            <div class="splide section-reveal" id="projects-carousel">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <li class="splide__slide">
-                            <div class="project-card bg-white rounded-xl p-8 shadow-lg">
-                                <img src="resources/ecommerce-mockup.png" alt="汉薇商城" class="w-full h-48 object-cover rounded-lg mb-6">
-                                <h3 class="font-serif text-2xl font-bold mb-4">汉薇商城电商平台</h3>
-                                <p class="text-gray-600 mb-6">恒基集团社交新零售电商平台，支持高并发访问和快速裂变推广，重构架构后性能提升30%。</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">Spring Boot</span>
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">MySQL</span>
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">Redis</span>
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">Docker</span>
-                                </div>
-                                <div class="text-sm text-gray-500">
-                                    <span class="font-medium">团队规模:</span> 6人 | <span class="font-medium">项目周期:</span> 2年
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide">
-                            <div class="project-card bg-white rounded-xl p-8 shadow-lg">
-                                <img src="resources/architecture-diagram.png" alt="万达广告平台" class="w-full h-48 object-cover rounded-lg mb-6">
-                                <h3 class="font-serif text-2xl font-bold mb-4">万达飞凡广告平台</h3>
-                                <p class="text-gray-600 mb-6">从0到1搭建万达广告平台，支持自有App广告投放需求，引入微服务架构优化系统体验。</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">Spring Cloud</span>
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">MongoDB</span>
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">Kafka</span>
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">Elasticsearch</span>
-                                </div>
-                                <div class="text-sm text-gray-500">
-                                    <span class="font-medium">团队规模:</span> 10人 | <span class="font-medium">项目周期:</span> 2年
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide">
-                            <div class="project-card bg-white rounded-xl p-8 shadow-lg">
-                                <img src="resources/iot-ecosystem.png" alt="智慧物联网平台" class="w-full h-48 object-cover rounded-lg mb-6">
-                                <h3 class="font-serif text-2xl font-bold mb-4">智慧物联网平台</h3>
-                                <p class="text-gray-600 mb-6">恒基集团燃气物联网设备管理平台，设计容量支持1000万台物联网燃气表，构筑智慧厨房设备管理底座。</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">NB-IoT</span>
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">MQTT</span>
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">InfluxDB</span>
-                                    <span class="tech-tag px-3 py-1 rounded-full text-sm">Kubernetes</span>
-                                </div>
-                                <div class="text-sm text-gray-500">
-                                    <span class="font-medium">团队规模:</span> 6人 | <span class="font-medium">项目周期:</span> 3年
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
+                <!-- Projects will be loaded dynamically -->
             </div>
         </div>
     </section>
 
-    <!-- Achievements -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 section-reveal">
-                <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">职业成就</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    用数据说话，见证技术实力与项目管理能力的完美结合
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center section-reveal">
-                    <div class="bg-white rounded-xl p-8 shadow-lg">
-                        <div class="stats-number" data-count="13">0</div>
-                        <div class="text-gray-600 font-medium">年工作经验</div>
-                        <div class="text-sm text-gray-500 mt-2">Java架构与研发</div>
-                    </div>
-                </div>
-                <div class="text-center section-reveal">
-                    <div class="bg-white rounded-xl p-8 shadow-lg">
-                        <div class="stats-number" data-count="20">0</div>
-                        <div class="text-gray-600 font-medium">+ 重大项目</div>
-                        <div class="text-sm text-gray-500 mt-2">从0到1搭建系统</div>
-                    </div>
-                </div>
-                <div class="text-center section-reveal">
-                    <div class="bg-white rounded-xl p-8 shadow-lg">
-                        <div class="stats-number" data-count="100">0</div>
-                        <div class="text-gray-600 font-medium">人+ 团队管理</div>
-                        <div class="text-sm text-gray-500 mt-2">技术团队领导</div>
-                    </div>
-                </div>
-                <div class="text-center section-reveal">
-                    <div class="bg-white rounded-xl p-8 shadow-lg">
-                        <div class="stats-number" data-count="5">0</div>
-                        <div class="text-gray-600 font-medium">个技术领域</div>
-                        <div class="text-sm text-gray-500 mt-2">电商·广告·GIS·IoT</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact CTA -->
-    <section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="font-serif text-4xl font-bold text-white mb-6">
-                让我们一起构建下一个伟大的产品
-            </h2>
-            <p class="text-xl text-blue-100 mb-8">
-                如果您正在寻找一位经验丰富的技术领导者来推动您的项目，我很乐意与您交流
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="contact.html" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
-                    开始合作
-                </a>
-                <a href="about.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition-colors">
-                    了解更多
-                </a>
+
+    <!-- Education & Contact Section -->
+    <section id="contact" class="py-16 lg:py-24 bg-neutral-900 text-white reveal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Education -->
+                <div class="reveal reveal-left">
+                    <h2 class="text-3xl lg:text-4xl font-display font-bold mb-8" data-i18n="education.title">教育背景</h2>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-primary-500 pl-6">
+                            <div class="text-sm text-neutral-400 mb-1">2005.9 - 2007.7</div>
+                            <div class="flex items-center space-x-3 mb-2">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 text-primary-500 education-icon"></i>
+                                <h3 class="text-xl font-semibold" data-i18n="education.master">中国农业大学</h3>
+                            </div>
+                            <p class="text-neutral-300" data-i18n="education.master-major">地图学与地理信息系统 · 硕士</p>
+                        </div>
+                        <div class="border-l-4 border-primary-500 pl-6">
+                            <div class="text-sm text-neutral-400 mb-1">2001.9 - 2005.7</div>
+                            <div class="flex items-center space-x-3 mb-2">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 text-primary-500 education-icon"></i>
+                                <h3 class="text-xl font-semibold" data-i18n="education.bachelor">中国农业大学</h3>
+                            </div>
+                            <p class="text-neutral-300" data-i18n="education.bachelor-major">信息管理与信息系统 · 学士</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact -->
+                <div class="reveal reveal-right">
+                    <h2 class="text-3xl lg:text-4xl font-display font-bold mb-8" data-i18n="contact.title">联系方式</h2>
+                    <div class="space-y-6">
+                        <!-- Email -->
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center contact-icon">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-neutral-400" data-i18n="contact.email-label">邮箱</div>
+                                <div class="text-sm font-semibold">xgyb12458@163.com</div>
+                            </div>
+                        </div>
+                        
+                        <!-- WeChat -->
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center contact-icon">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-neutral-400" data-i18n="contact.wechat-label">微信</div>
+                                <div class="text-sm font-semibold">songdm306</div>
+                            </div>
+                        </div>
+                        
+                        <!-- GitHub -->
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center contact-icon">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-neutral-400" data-i18n="contact.github-label">GitHub</div>
+                                <a href="https://github.com/demingsong" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold hover:text-primary-500 transition-colors duration-200">github.com/demingsong</a>
+                            </div>
+                        </div>
+                        
+                        <!-- LinkedIn -->
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center contact-icon">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-neutral-400" data-i18n="contact.linkedin-label">LinkedIn</div>
+                                <div class="text-sm font-semibold">linkedin.com/in/xgyb12458</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="font-serif text-2xl font-bold mb-4">宋德明</div>
-                <p class="text-gray-400 mb-6">资深Java架构师 | 技术领导者</p>
-                <div class="flex justify-center space-x-6 mb-8">
-                    <a href="mailto:xgyb12458@163.com" class="text-gray-400 hover:text-white transition-colors">
-                        <span class="sr-only">Email</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                        </svg>
-                    </a>
-                    <a href="tel:15203355968" class="text-gray-400 hover:text-white transition-colors">
-                        <span class="sr-only">Phone</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
-                        </svg>
-                    </a>
-                </div>
-                <div class="border-t border-gray-800 pt-8">
-                    <p class="text-gray-400 text-sm">
-                        © 2024 宋德明. 保留所有权利.
-                    </p>
-                </div>
+    <footer class="bg-neutral-900 border-t border-neutral-800 py-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center text-neutral-400">
+                <p data-i18n="footer.copyright">&copy; 2025 宋德明. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
